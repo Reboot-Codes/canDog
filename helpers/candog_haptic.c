@@ -1,8 +1,8 @@
-#include "boilerplate_haptic.h"
-#include "../boilerplate.h"
+#include "candog_haptic.h"
+#include "../candog.h"
 
-void boilerplate_play_happy_bump(void* context) {
-    Boilerplate* app = context;
+void candog_play_happy_bump(void* context) {
+    Candog* app = context;
     if(app->haptic != 1) {
         return;
     }
@@ -11,8 +11,8 @@ void boilerplate_play_happy_bump(void* context) {
     notification_message(app->notification, &sequence_reset_vibro);
 }
 
-void boilerplate_play_bad_bump(void* context) {
-    Boilerplate* app = context;
+void candog_play_bad_bump(void* context) {
+    Candog* app = context;
     if(app->haptic != 1) {
         return;
     }
@@ -21,8 +21,8 @@ void boilerplate_play_bad_bump(void* context) {
     notification_message(app->notification, &sequence_reset_vibro);
 }
 
-void boilerplate_play_long_bump(void* context) {
-    Boilerplate* app = context;
+void candog_play_long_bump(void* context) {
+    Candog* app = context;
     if(app->haptic != 1) {
         return;
     }

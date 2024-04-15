@@ -1,8 +1,8 @@
-#include "../boilerplate.h"
+#include "../candog.h"
 
-void boilerplate_scene_scene_4_on_enter(void* context) {
+void candog_scene_scene_4_on_enter(void* context) {
     furi_assert(context);
-    Boilerplate* app = context;
+    Candog* app = context;
     DialogsFileBrowserOptions browser_options;
 
     // This will filter the browser to only show one file type and also add an icon
@@ -22,7 +22,7 @@ void boilerplate_scene_scene_4_on_enter(void* context) {
 
     if(success) {
         // Load page to do something with result
-        //scene_manager_next_scene(app->scene_manager, BoilerplateViewIdMenu);
+        //scene_manager_next_scene(app->scene_manager, CandogViewIdMenu);
         scene_manager_previous_scene(app->scene_manager); // temp for showcase
     } else {
         // This is basically if someone quites the browser
@@ -30,7 +30,7 @@ void boilerplate_scene_scene_4_on_enter(void* context) {
     }
 }
 
-bool boilerplate_scene_scene_4_on_event(void* context, SceneManagerEvent event) {
+bool candog_scene_scene_4_on_event(void* context, SceneManagerEvent event) {
     UNUSED(context);
     UNUSED(event);
     bool consumed = true;
@@ -38,6 +38,6 @@ bool boilerplate_scene_scene_4_on_event(void* context, SceneManagerEvent event) 
     return consumed;
 }
 
-void boilerplate_scene_scene_4_on_exit(void* context) {
+void candog_scene_scene_4_on_exit(void* context) {
     UNUSED(context);
 }

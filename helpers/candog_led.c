@@ -1,8 +1,8 @@
-#include "boilerplate_led.h"
-#include "../boilerplate.h"
+#include "candog_led.h"
+#include "../candog.h"
 
-void boilerplate_led_set_rgb(void* context, int red, int green, int blue) {
-    Boilerplate* app = context;
+void candog_led_set_rgb(void* context, int red, int green, int blue) {
+    Candog* app = context;
     if(app->led != 1) {
         return;
     }
@@ -28,8 +28,8 @@ void boilerplate_led_set_rgb(void* context, int red, int green, int blue) {
         0, FuriFlagWaitAny, 10); //Delay, prevent removal from RAM before LED value set
 }
 
-void boilerplate_led_reset(void* context) {
-    Boilerplate* app = context;
+void candog_led_reset(void* context) {
+    Candog* app = context;
     notification_message(app->notification, &sequence_reset_red);
     notification_message(app->notification, &sequence_reset_green);
     notification_message(app->notification, &sequence_reset_blue);

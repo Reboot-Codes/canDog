@@ -1,10 +1,10 @@
-#include "boilerplate_speaker.h"
-#include "../boilerplate.h"
+#include "candog_speaker.h"
+#include "../candog.h"
 
 #define NOTE_INPUT 587.33f
 
-void boilerplate_play_input_sound(void* context) {
-    Boilerplate* app = context;
+void candog_play_input_sound(void* context) {
+    Candog* app = context;
     if(app->speaker != 1) {
         return;
     }
@@ -14,8 +14,8 @@ void boilerplate_play_input_sound(void* context) {
     }
 }
 
-void boilerplate_stop_all_sound(void* context) {
-    Boilerplate* app = context;
+void candog_stop_all_sound(void* context) {
+    Candog* app = context;
     if(app->speaker != 1) {
         return;
     }

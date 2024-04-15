@@ -1,6 +1,6 @@
-## Boilerplate
+## Candog
 
-Boilerplate for a Flipper Zero application, you can use this code as a starting point for developing your own app. 
+Candog for a Flipper Zero application, you can use this code as a starting point for developing your own app. 
 ### Features
 - Start Screen
 - Menu

@@ -13,14 +13,14 @@
 #include <gui/modules/variable_item_list.h>
 #include <gui/modules/button_menu.h>
 #include <gui/modules/dialog_ex.h>
-#include "scenes/boilerplate_scene.h"
-#include "views/boilerplate_startscreen.h"
-#include "views/boilerplate_scene_1.h"
-#include "views/boilerplate_scene_2.h"
-#include "helpers/boilerplate_storage.h"
-#include "boilerplate_icons.h"
+#include "scenes/candog_scene.h"
+#include "views/candog_startscreen.h"
+#include "views/candog_scene_1.h"
+#include "views/candog_scene_2.h"
+#include "helpers/candog_storage.h"
+#include "candog_icons.h"
 
-#define TAG "Boilerplate"
+#define TAG "Candog"
 
 #define SUBGHZ_APP_EXTENSION ".sub"
 #define SUBGHZ_APP_FOLDER ANY_PATH("subghz")
@@ -33,9 +33,9 @@ typedef struct {
     Submenu* submenu;
     SceneManager* scene_manager;
     VariableItemList* variable_item_list;
-    BoilerplateStartscreen* boilerplate_startscreen;
-    BoilerplateScene1* boilerplate_scene_1;
-    BoilerplateScene2* boilerplate_scene_2;
+    CandogStartscreen* candog_startscreen;
+    CandogScene1* candog_scene_1;
+    CandogScene2* candog_scene_2;
     DialogsApp* dialogs; // File Browser
     FuriString* file_path; // File Browser
     uint32_t haptic;
@@ -43,35 +43,35 @@ typedef struct {
     uint32_t led;
     uint32_t save_settings;
     ButtonMenu* button_menu; // Button Menu
-} Boilerplate;
+} Candog;
 
 typedef enum {
-    BoilerplateViewIdStartscreen,
-    BoilerplateViewIdMenu,
-    BoilerplateViewIdScene1,
-    BoilerplateViewIdScene2,
-    BoilerplateViewIdScene3,
-    BoilerplateViewIdScene4,
-    BoilerplateViewIdScene5,
-    BoilerplateViewIdSettings,
-} BoilerplateViewId;
+    CandogViewIdStartscreen,
+    CandogViewIdMenu,
+    CandogViewIdScene1,
+    CandogViewIdScene2,
+    CandogViewIdScene3,
+    CandogViewIdScene4,
+    CandogViewIdScene5,
+    CandogViewIdSettings,
+} CandogViewId;
 
 typedef enum {
-    BoilerplateHapticOff,
-    BoilerplateHapticOn,
-} BoilerplateHapticState;
+    CandogHapticOff,
+    CandogHapticOn,
+} CandogHapticState;
 
 typedef enum {
-    BoilerplateSpeakerOff,
-    BoilerplateSpeakerOn,
-} BoilerplateSpeakerState;
+    CandogSpeakerOff,
+    CandogSpeakerOn,
+} CandogSpeakerState;
 
 typedef enum {
-    BoilerplateLedOff,
-    BoilerplateLedOn,
-} BoilerplateLedState;
+    CandogLedOff,
+    CandogLedOn,
+} CandogLedState;
 
 typedef enum {
-    BoilerplateSettingsOff,
-    BoilerplateSettingsOn,
-} BoilerplateSettingsStoreState;
+    CandogSettingsOff,
+    CandogSettingsOn,
+} CandogSettingsStoreState;

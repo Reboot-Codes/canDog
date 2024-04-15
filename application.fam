@@ -3,7 +3,7 @@ App(
     name="canDog",
     apptype=FlipperAppType.EXTERNAL,
     entry_point="candog_app",
-    cdefines=["APP_BOILERPLATE"],
+    cdefines=["APP_CANDOG"],
     requires=[
         "gui",
         "storage",

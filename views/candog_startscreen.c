@@ -34,7 +34,7 @@ void candog_startscreen_draw(Canvas* canvas, CandogStartscreenModel* model) {
     canvas_set_font(canvas, FontSecondary);
     canvas_draw_str_aligned(canvas, 64, 22, AlignCenter, AlignTop, "Explain your app");
     canvas_draw_str_aligned(canvas, 64, 32, AlignCenter, AlignTop, "on this screen");
-    snprintf(buffer, sizeof(buffer), "Version: %s", BOILERPLATE_VERSION);
+    snprintf(buffer, sizeof(buffer), "Version: %s", CANDOG_VERSION);
     canvas_draw_str_aligned(canvas, 64, 42, AlignCenter, AlignTop, buffer);
     elements_button_center(canvas, "Start");
 }

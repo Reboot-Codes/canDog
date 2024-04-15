@@ -121,7 +121,7 @@ int32_t candog_app(void* p) {
 
     view_dispatcher_attach_to_gui(app->view_dispatcher, app->gui, ViewDispatcherTypeFullscreen);
 
-    scene_manager_next_scene(app->scene_manager, CandogSceneStartscreen); //Start with start screen
+    scene_manager_next_scene(app->scene_manager, CandogSceneMenu); //Start with start screen
     //scene_manager_next_scene(app->scene_manager, CandogSceneMenu); //if you want to directly start with Menu
 
     furi_hal_power_suppress_charge_enter();

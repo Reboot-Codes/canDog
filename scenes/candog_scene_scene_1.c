@@ -2,6 +2,8 @@
 #include "../helpers/candog_custom_event.h"
 #include "../views/candog_scene_1.h"
 
+// Start sniffing
+
 void candog_scene_1_callback(CandogCustomEvent event, void* context) {
     furi_assert(context);
     Candog* app = context;

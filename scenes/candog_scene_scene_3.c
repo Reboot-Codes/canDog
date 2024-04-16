@@ -3,6 +3,8 @@
 #include "../helpers/candog_haptic.h"
 #include "../helpers/candog_led.h"
 
+// Credits
+
 typedef enum {
     ButtonIndexControl3 = -3,
     ButtonIndexControl2 = -2,

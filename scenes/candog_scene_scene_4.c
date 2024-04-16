@@ -1,5 +1,7 @@
 #include "../candog.h"
 
+// Export capture as .pcap
+
 void candog_scene_scene_4_on_enter(void* context) {
     furi_assert(context);
     Candog* app = context;

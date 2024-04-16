@@ -4,6 +4,8 @@
 #include "../helpers/candog_led.h"
 #include "../views/candog_scene_2.h"
 
+// Replay capture
+
 void candog_scene_2_callback(CandogCustomEvent event, void* context) {
     furi_assert(context);
     Candog* app = context;

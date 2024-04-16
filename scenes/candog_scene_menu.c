@@ -1,10 +1,10 @@
 #include "../candog.h"
 
 enum SubmenuIndex {
-    SubmenuIndexScene1 = 10,
-    SubmenuIndexScene2,
-    SubmenuIndexScene3,
-    SubmenuIndexScene4,
+    SubmenuIndexSniff = 10,
+    SubmenuIndexReplay,
+    SubmenuIndexCredits,
+    SubmenuIndexExport,
     SubmenuIndexScene5,
     SubmenuIndexSettings,
 };
@@ -18,31 +18,23 @@ void candog_scene_menu_on_enter(void* context) {
     Candog* app = context;
 
     submenu_add_item(
+        app->submenu, "Start sniffing", SubmenuIndexSniff, candog_scene_menu_submenu_callback, app);
+    submenu_add_item(
         app->submenu,
-        "Scene 1 (empty)",
-        SubmenuIndexScene1,
+        "Replay Capture",
+        SubmenuIndexReplay,
         candog_scene_menu_submenu_callback,
         app);
     submenu_add_item(
         app->submenu,
-        "Scene 2 (Inputs/Effects)",
-        SubmenuIndexScene2,
-        candog_scene_menu_submenu_callback,
-        app);
-    submenu_add_item(
-        app->submenu,
-        "Scene 3 (Buttonmenu)",
-        SubmenuIndexScene3,
-        candog_scene_menu_submenu_callback,
-        app);
-    submenu_add_item(
-        app->submenu,
-        "Scene 4 (File Browser)",
-        SubmenuIndexScene4,
+        "Export Capture",
+        SubmenuIndexExport,
         candog_scene_menu_submenu_callback,
         app);
     submenu_add_item(
         app->submenu, "Settings", SubmenuIndexSettings, candog_scene_menu_submenu_callback, app);
+    submenu_add_item(
+        app->submenu, "Credits", SubmenuIndexCredits, candog_scene_menu_submenu_callback, app);
 
     submenu_set_selected_item(
         app->submenu, scene_manager_get_scene_state(app->scene_manager, CandogSceneMenu));
@@ -59,19 +51,20 @@ bool candog_scene_menu_on_event(void* context, SceneManagerEvent event) {
         view_dispatcher_stop(app->view_dispatcher);
         return true;
     } else if(event.type == SceneManagerEventTypeCustom) {
-        if(event.event == SubmenuIndexScene1) {
-            scene_manager_set_scene_state(app->scene_manager, CandogSceneMenu, SubmenuIndexScene1);
+        if(event.event == SubmenuIndexSniff) {
+            scene_manager_set_scene_state(app->scene_manager, CandogSceneMenu, SubmenuIndexSniff);
             scene_manager_next_scene(app->scene_manager, CandogSceneScene_1);
             return true;
-        } else if(event.event == SubmenuIndexScene2) {
-            scene_manager_set_scene_state(app->scene_manager, CandogSceneMenu, SubmenuIndexScene2);
+        } else if(event.event == SubmenuIndexReplay) {
+            scene_manager_set_scene_state(app->scene_manager, CandogSceneMenu, SubmenuIndexReplay);
             scene_manager_next_scene(app->scene_manager, CandogSceneScene_2);
             return true;
-        } else if(event.event == SubmenuIndexScene3) {
-            scene_manager_set_scene_state(app->scene_manager, CandogSceneMenu, SubmenuIndexScene3);
+        } else if(event.event == SubmenuIndexCredits) {
+            scene_manager_set_scene_state(
+                app->scene_manager, CandogSceneMenu, SubmenuIndexCredits);
             scene_manager_next_scene(app->scene_manager, CandogSceneScene_3);
-        } else if(event.event == SubmenuIndexScene4) {
-            scene_manager_set_scene_state(app->scene_manager, CandogSceneMenu, SubmenuIndexScene4);
+        } else if(event.event == SubmenuIndexExport) {
+            scene_manager_set_scene_state(app->scene_manager, CandogSceneMenu, SubmenuIndexExport);
             scene_manager_next_scene(app->scene_manager, CandogSceneScene_4);
         } else if(event.event == SubmenuIndexSettings) {
             scene_manager_set_scene_state(

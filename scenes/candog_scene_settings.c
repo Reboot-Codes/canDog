@@ -1,4 +1,5 @@
 #include "../candog.h"
+#include "../can_peripherals/can.h"
 #include <lib/toolbox/value_index.h>
 
 enum SettingsIndex {

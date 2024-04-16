@@ -50,22 +50,27 @@ bool candog_scene_menu_on_event(void* context, SceneManagerEvent event) {
         scene_manager_stop(app->scene_manager);
         view_dispatcher_stop(app->view_dispatcher);
         return true;
+
     } else if(event.type == SceneManagerEventTypeCustom) {
         if(event.event == SubmenuIndexSniff) {
             scene_manager_set_scene_state(app->scene_manager, CandogSceneMenu, SubmenuIndexSniff);
             scene_manager_next_scene(app->scene_manager, CandogSceneScene_1);
             return true;
+
         } else if(event.event == SubmenuIndexReplay) {
             scene_manager_set_scene_state(app->scene_manager, CandogSceneMenu, SubmenuIndexReplay);
             scene_manager_next_scene(app->scene_manager, CandogSceneScene_2);
             return true;
+
         } else if(event.event == SubmenuIndexCredits) {
             scene_manager_set_scene_state(
                 app->scene_manager, CandogSceneMenu, SubmenuIndexCredits);
             scene_manager_next_scene(app->scene_manager, CandogSceneScene_3);
+
         } else if(event.event == SubmenuIndexExport) {
             scene_manager_set_scene_state(app->scene_manager, CandogSceneMenu, SubmenuIndexExport);
             scene_manager_next_scene(app->scene_manager, CandogSceneScene_4);
+
         } else if(event.event == SubmenuIndexSettings) {
             scene_manager_set_scene_state(
                 app->scene_manager, CandogSceneMenu, SubmenuIndexSettings);

@@ -53,8 +53,7 @@ void candog_save_settings(void* context) {
     flipper_format_write_uint32(fff_file, CANDOG_SETTINGS_KEY_HAPTIC, &app->haptic, 1);
     flipper_format_write_uint32(fff_file, CANDOG_SETTINGS_KEY_SPEAKER, &app->speaker, 1);
     flipper_format_write_uint32(fff_file, CANDOG_SETTINGS_KEY_LED, &app->led, 1);
-    flipper_format_write_uint32(
-        fff_file, CANDOG_SETTINGS_KEY_SAVE_SETTINGS, &app->save_settings, 1);
+    flipper_format_write_uint32(fff_file, CANDOG_SETTINGS_KEY_SAVE_SETTINGS, &app->save_settings, 1);
 
     if (!flipper_format_rewind(fff_file)) {
         candog_close_config_file(fff_file);
@@ -106,8 +105,7 @@ void candog_read_settings(void* context) {
     flipper_format_read_uint32(fff_file, CANDOG_SETTINGS_KEY_HAPTIC, &app->haptic, 1);
     flipper_format_read_uint32(fff_file, CANDOG_SETTINGS_KEY_SPEAKER, &app->speaker, 1);
     flipper_format_read_uint32(fff_file, CANDOG_SETTINGS_KEY_LED, &app->led, 1);
-    flipper_format_read_uint32(
-        fff_file, CANDOG_SETTINGS_KEY_SAVE_SETTINGS, &app->save_settings, 1);
+    flipper_format_read_uint32(fff_file, CANDOG_SETTINGS_KEY_SAVE_SETTINGS, &app->save_settings, 1);
 
     flipper_format_rewind(fff_file);
 

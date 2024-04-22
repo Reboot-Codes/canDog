@@ -18,14 +18,17 @@ static void candog_scene_3_callback(void* context, int32_t index, InputType type
     Candog* app = context;
 
     uint16_t custom_type;
-    if(type == InputTypePress) {
+    if (type == InputTypePress) {
         custom_type = CandogCustomEventMenuSelected;
-    } else if(type == InputTypeRelease) {
+    }
+    else if (type == InputTypeRelease) {
         custom_type = CandogCustomEventMenuVoid;
-    } else if(type == InputTypeShort) {
+    }
+    else if (type == InputTypeShort) {
         //somehow ButtonMenuItemTypeCommon uses InputTypeShort
         custom_type = CandogCustomEventMenuSelected;
-    } else {
+    }
+    else {
         furi_crash("Unexpected Input Type");
     }
     view_dispatcher_send_custom_event(
@@ -38,55 +41,16 @@ void candog_scene_scene_3_on_enter(void* context) {
     ButtonMenu* button_menu = app->button_menu;
     SceneManager* scene_manager = app->scene_manager;
 
-    button_menu_add_item(
-        button_menu,
-        "Common",
-        ButtonIndexButton1,
-        candog_scene_3_callback,
-        ButtonMenuItemTypeCommon,
-        context);
-    button_menu_add_item(
-        button_menu,
-        "Button",
-        ButtonIndexButton2,
-        candog_scene_3_callback,
-        ButtonMenuItemTypeCommon,
-        context);
-    button_menu_add_item(
-        button_menu,
-        "Examples",
-        ButtonIndexButton1,
-        candog_scene_3_callback,
-        ButtonMenuItemTypeCommon,
-        context);
-
-    button_menu_add_item(
-        button_menu,
-        "Control",
-        ButtonIndexControl1,
-        candog_scene_3_callback,
-        ButtonMenuItemTypeControl,
-        context);
-
-    button_menu_add_item(
-        button_menu,
-        "Button",
-        ButtonIndexControl2,
-        candog_scene_3_callback,
-        ButtonMenuItemTypeControl,
-        context);
-
-    button_menu_add_item(
-        button_menu,
-        "Examples",
-        ButtonIndexControl3,
-        candog_scene_3_callback,
-        ButtonMenuItemTypeControl,
-        context);
+    button_menu_add_item(button_menu, "Common", ButtonIndexButton1, candog_scene_3_callback, ButtonMenuItemTypeCommon, context);
+    button_menu_add_item(button_menu, "Button", ButtonIndexButton2, candog_scene_3_callback, ButtonMenuItemTypeCommon, context);
+    button_menu_add_item(button_menu, "Examples", ButtonIndexButton1, candog_scene_3_callback, ButtonMenuItemTypeCommon, context);
+    button_menu_add_item(button_menu, "Control", ButtonIndexControl1, candog_scene_3_callback, ButtonMenuItemTypeControl, context);
+    button_menu_add_item(button_menu, "Button", ButtonIndexControl2, candog_scene_3_callback, ButtonMenuItemTypeControl, context);
+    button_menu_add_item(button_menu, "Examples", ButtonIndexControl3, candog_scene_3_callback, ButtonMenuItemTypeControl, context);
 
     button_menu_set_header(button_menu, "Button Menu");
-    const int16_t button_index =
-        (signed)scene_manager_get_scene_state(app->scene_manager, CandogViewIdScene3);
+    const int16_t button_index = (signed)scene_manager_get_scene_state(app->scene_manager, CandogViewIdScene3);
+
     button_menu_set_selected_item(button_menu, button_index);
     scene_manager_set_scene_state(scene_manager, CandogSceneScene_3, ButtonIndexButton1);
 
@@ -97,11 +61,11 @@ bool candog_scene_scene_3_on_event(void* context, SceneManagerEvent event) {
     Candog* app = context;
     bool consumed = false;
 
-    if(event.type == SceneManagerEventTypeCustom) {
+    if (event.type == SceneManagerEventTypeCustom) {
         const uint16_t custom_type = candog_custom_menu_event_get_type(event.event);
         const int16_t button_index = candog_custom_menu_event_get_value(event.event);
-        if(custom_type == CandogCustomEventMenuSelected) {
-            switch(button_index) {
+        if (custom_type == CandogCustomEventMenuSelected) {
+            switch (button_index) {
             case ButtonIndexButton1:
                 candog_play_happy_bump(app);
                 candog_led_set_rgb(app, 255, 0, 0);

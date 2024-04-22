@@ -33,8 +33,7 @@ Candog* candog_app_alloc() {
 
     app->scene_manager = scene_manager_alloc(&candog_scene_handlers, app);
     view_dispatcher_set_event_callback_context(app->view_dispatcher, app);
-    view_dispatcher_set_navigation_event_callback(
-        app->view_dispatcher, candog_navigation_event_callback);
+    view_dispatcher_set_navigation_event_callback(app->view_dispatcher, candog_navigation_event_callback);
     view_dispatcher_set_tick_event_callback(app->view_dispatcher, candog_tick_event_callback, 100);
     view_dispatcher_set_custom_event_callback(app->view_dispatcher, candog_custom_event_callback);
     app->submenu = submenu_alloc();
@@ -52,22 +51,15 @@ Candog* candog_app_alloc() {
     // Load configs
     candog_read_settings(app);
 
-    view_dispatcher_add_view(
-        app->view_dispatcher, CandogViewIdMenu, submenu_get_view(app->submenu));
+    view_dispatcher_add_view(app->view_dispatcher, CandogViewIdMenu, submenu_get_view(app->submenu));
     app->candog_startscreen = candog_startscreen_alloc();
-    view_dispatcher_add_view(
-        app->view_dispatcher,
-        CandogViewIdStartscreen,
-        candog_startscreen_get_view(app->candog_startscreen));
+    view_dispatcher_add_view(app->view_dispatcher, CandogViewIdStartscreen, candog_startscreen_get_view(app->candog_startscreen));
     app->candog_scene_1 = candog_scene_1_alloc();
-    view_dispatcher_add_view(
-        app->view_dispatcher, CandogViewIdScene1, candog_scene_1_get_view(app->candog_scene_1));
+    view_dispatcher_add_view(app->view_dispatcher, CandogViewIdScene1, candog_scene_1_get_view(app->candog_scene_1));
     app->candog_scene_2 = candog_scene_2_alloc();
-    view_dispatcher_add_view(
-        app->view_dispatcher, CandogViewIdScene2, candog_scene_2_get_view(app->candog_scene_2));
+    view_dispatcher_add_view(app->view_dispatcher, CandogViewIdScene2, candog_scene_2_get_view(app->candog_scene_2));
     app->button_menu = button_menu_alloc();
-    view_dispatcher_add_view(
-        app->view_dispatcher, CandogViewIdScene3, button_menu_get_view(app->button_menu));
+    view_dispatcher_add_view(app->view_dispatcher, CandogViewIdScene3, button_menu_get_view(app->button_menu));
 
     app->variable_item_list = variable_item_list_alloc();
     view_dispatcher_add_view(
@@ -122,7 +114,6 @@ int32_t candog_app(void* p) {
     view_dispatcher_attach_to_gui(app->view_dispatcher, app->gui, ViewDispatcherTypeFullscreen);
 
     scene_manager_next_scene(app->scene_manager, CandogSceneMenu); //Start with start screen
-    //scene_manager_next_scene(app->scene_manager, CandogSceneMenu); //if you want to directly start with Menu
 
     furi_hal_power_suppress_charge_enter();
 

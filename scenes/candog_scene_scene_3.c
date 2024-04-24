@@ -94,7 +94,6 @@ bool candog_scene_scene_3_on_event(void* context, SceneManagerEvent event) {
             consumed = true;
         }
     }
-
     return consumed;
 }
 

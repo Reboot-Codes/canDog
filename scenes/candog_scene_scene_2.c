@@ -23,8 +23,8 @@ bool candog_scene_scene_2_on_event(void* context, SceneManagerEvent event) {
     Candog* app = context;
     bool consumed = false;
 
-    if(event.type == SceneManagerEventTypeCustom) {
-        switch(event.event) {
+    if (event.type == SceneManagerEventTypeCustom) {
+        switch (event.event) {
         case CandogCustomEventScene2Left:
         case CandogCustomEventScene2Right:
             break;
@@ -35,8 +35,7 @@ bool candog_scene_scene_2_on_event(void* context, SceneManagerEvent event) {
             notification_message(app->notification, &sequence_reset_red);
             notification_message(app->notification, &sequence_reset_green);
             notification_message(app->notification, &sequence_reset_blue);
-            if(!scene_manager_search_and_switch_to_previous_scene(
-                   app->scene_manager, CandogSceneMenu)) {
+            if (!scene_manager_search_and_switch_to_previous_scene(app->scene_manager, CandogSceneMenu)) {
                 scene_manager_stop(app->scene_manager);
                 view_dispatcher_stop(app->view_dispatcher);
             }

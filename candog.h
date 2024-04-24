@@ -24,7 +24,10 @@
 
 #define SUBGHZ_APP_EXTENSION ".sub"
 #define SUBGHZ_APP_FOLDER ANY_PATH("subghz")
-#define CANDOG_VERSION "1.1"
+#define CANDOG_APP_EXTENSION ".cap"
+#define CANDOG_CAPTURE_EXTENSION ".pcap"
+#define CANDOG_APP_FOLDER ANY_PATH("candog")
+#define CANDOG_VERSION "1.2"
 
 typedef struct {
     Gui* gui;

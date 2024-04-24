@@ -53,19 +53,20 @@ Candog* candog_app_alloc() {
 
     view_dispatcher_add_view(app->view_dispatcher, CandogViewIdMenu, submenu_get_view(app->submenu));
     app->candog_startscreen = candog_startscreen_alloc();
+
     view_dispatcher_add_view(app->view_dispatcher, CandogViewIdStartscreen, candog_startscreen_get_view(app->candog_startscreen));
     app->candog_scene_1 = candog_scene_1_alloc();
+
     view_dispatcher_add_view(app->view_dispatcher, CandogViewIdScene1, candog_scene_1_get_view(app->candog_scene_1));
     app->candog_scene_2 = candog_scene_2_alloc();
+
     view_dispatcher_add_view(app->view_dispatcher, CandogViewIdScene2, candog_scene_2_get_view(app->candog_scene_2));
     app->button_menu = button_menu_alloc();
-    view_dispatcher_add_view(app->view_dispatcher, CandogViewIdScene3, button_menu_get_view(app->button_menu));
 
+    view_dispatcher_add_view(app->view_dispatcher, CandogViewIdScene3, button_menu_get_view(app->button_menu));
     app->variable_item_list = variable_item_list_alloc();
-    view_dispatcher_add_view(
-        app->view_dispatcher,
-        CandogViewIdSettings,
-        variable_item_list_get_view(app->variable_item_list));
+
+    view_dispatcher_add_view(app->view_dispatcher, CandogViewIdSettings, variable_item_list_get_view(app->variable_item_list));
 
     //End Scene Additions
 

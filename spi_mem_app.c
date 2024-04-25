@@ -42,30 +42,16 @@ SPIMemApp* spi_mem_alloc(void) {
 
     view_dispatcher_enable_queue(instance->view_dispatcher);
     view_dispatcher_set_event_callback_context(instance->view_dispatcher, instance);
-    view_dispatcher_set_custom_event_callback(
-        instance->view_dispatcher, spi_mem_custom_event_callback);
-    view_dispatcher_set_navigation_event_callback(
-        instance->view_dispatcher, spi_mem_back_event_callback);
-    view_dispatcher_attach_to_gui(
-        instance->view_dispatcher, instance->gui, ViewDispatcherTypeFullscreen);
-    view_dispatcher_add_view(
-        instance->view_dispatcher, SPIMemViewSubmenu, submenu_get_view(instance->submenu));
-    view_dispatcher_add_view(
-        instance->view_dispatcher, SPIMemViewDialogEx, dialog_ex_get_view(instance->dialog_ex));
-    view_dispatcher_add_view(
-        instance->view_dispatcher, SPIMemViewPopup, popup_get_view(instance->popup));
-    view_dispatcher_add_view(
-        instance->view_dispatcher, SPIMemViewWidget, widget_get_view(instance->widget));
-    view_dispatcher_add_view(
-        instance->view_dispatcher,
-        SPIMemViewProgress,
-        spi_mem_view_progress_get_view(instance->view_progress));
-    view_dispatcher_add_view(
-        instance->view_dispatcher,
-        SPIMemViewDetect,
-        spi_mem_view_detect_get_view(instance->view_detect));
-    view_dispatcher_add_view(
-        instance->view_dispatcher, SPIMemViewTextInput, text_input_get_view(instance->text_input));
+    view_dispatcher_set_custom_event_callback(instance->view_dispatcher, spi_mem_custom_event_callback);
+    view_dispatcher_set_navigation_event_callback(instance->view_dispatcher, spi_mem_back_event_callback);
+    view_dispatcher_attach_to_gui(instance->view_dispatcher, instance->gui, ViewDispatcherTypeFullscreen);
+    view_dispatcher_add_view(instance->view_dispatcher, SPIMemViewSubmenu, submenu_get_view(instance->submenu));
+    view_dispatcher_add_view(instance->view_dispatcher, SPIMemViewDialogEx, dialog_ex_get_view(instance->dialog_ex));
+    view_dispatcher_add_view(instance->view_dispatcher, SPIMemViewPopup, popup_get_view(instance->popup));
+    view_dispatcher_add_view(instance->view_dispatcher, SPIMemViewWidget, widget_get_view(instance->widget));
+    view_dispatcher_add_view(instance->view_dispatcher, SPIMemViewProgress, spi_mem_view_progress_get_view(instance->view_progress));
+    view_dispatcher_add_view(instance->view_dispatcher, SPIMemViewDetect, spi_mem_view_detect_get_view(instance->view_detect));
+    view_dispatcher_add_view(instance->view_dispatcher, SPIMemViewTextInput, text_input_get_view(instance->text_input));
 
     furi_hal_power_enable_otg();
     furi_hal_spi_bus_handle_init(&furi_hal_spi_bus_handle_external);

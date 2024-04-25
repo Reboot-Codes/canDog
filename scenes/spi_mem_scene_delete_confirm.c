@@ -6,7 +6,7 @@ static void spi_mem_scene_delete_confirm_widget_callback(
     InputType type,
     void* context) {
     SPIMemApp* app = context;
-    if(type == InputTypeShort) {
+    if (type == InputTypeShort) {
         view_dispatcher_send_custom_event(app->view_dispatcher, result);
     }
 }
@@ -17,20 +17,9 @@ void spi_mem_scene_delete_confirm_on_enter(void* context) {
     FuriString* message = furi_string_alloc();
     path_extract_filename(app->file_path, file_name, true);
     furi_string_printf(message, "\e#Delete %s?\e#", furi_string_get_cstr(file_name));
-    widget_add_text_box_element(
-        app->widget, 0, 0, 128, 27, AlignCenter, AlignCenter, furi_string_get_cstr(message), true);
-    widget_add_button_element(
-        app->widget,
-        GuiButtonTypeLeft,
-        "Cancel",
-        spi_mem_scene_delete_confirm_widget_callback,
-        app);
-    widget_add_button_element(
-        app->widget,
-        GuiButtonTypeRight,
-        "Delete",
-        spi_mem_scene_delete_confirm_widget_callback,
-        app);
+    widget_add_text_box_element(app->widget, 0, 0, 128, 27, AlignCenter, AlignCenter, furi_string_get_cstr(message), true);
+    widget_add_button_element(app->widget, GuiButtonTypeLeft, "Cancel", spi_mem_scene_delete_confirm_widget_callback, app);
+    widget_add_button_element(app->widget, GuiButtonTypeRight, "Delete", spi_mem_scene_delete_confirm_widget_callback, app);
     view_dispatcher_switch_to_view(app->view_dispatcher, SPIMemViewWidget);
     furi_string_free(file_name);
     furi_string_free(message);
@@ -39,18 +28,19 @@ void spi_mem_scene_delete_confirm_on_enter(void* context) {
 bool spi_mem_scene_delete_confirm_on_event(void* context, SceneManagerEvent event) {
     SPIMemApp* app = context;
     bool success = false;
-    if(event.type == SceneManagerEventTypeCustom) {
+    if (event.type == SceneManagerEventTypeCustom) {
         success = true;
-        if(event.event == GuiButtonTypeRight) {
+        if (event.event == GuiButtonTypeRight) {
             app->mode = SPIMemModeDelete;
-            if(spi_mem_file_delete(app)) {
+            if (spi_mem_file_delete(app)) {
                 scene_manager_next_scene(app->scene_manager, SPIMemSceneSuccess);
-            } else {
+            }
+            else {
                 scene_manager_next_scene(app->scene_manager, SPIMemSceneStorageError);
             }
-        } else if(event.event == GuiButtonTypeLeft) {
-            scene_manager_search_and_switch_to_previous_scene(
-                app->scene_manager, SPIMemSceneSavedFileMenu);
+        }
+        else if (event.event == GuiButtonTypeLeft) {
+            scene_manager_search_and_switch_to_previous_scene(app->scene_manager, SPIMemSceneSavedFileMenu);
         }
     }
     return success;

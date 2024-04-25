@@ -18,7 +18,7 @@
 #include <toolbox/name_generator.h>
 #include "scenes/spi_mem_scene.h"
 #include "lib/spi/spi_mem_worker.h"
-#include "spi_mem_manager_icons.h"
+#include "candog_icons.h"
 #include "views/spi_mem_view_progress.h"
 #include "views/spi_mem_view_detect.h"
 

@@ -1,5 +1,5 @@
 #include "spi_mem_view_detect.h"
-#include "spi_mem_manager_icons.h"
+#include "candog_icons.h"
 #include <gui/elements.h>
 
 struct SPIMemDetectView {
@@ -57,8 +57,7 @@ SPIMemDetectView* spi_mem_view_detect_alloc() {
 }
 
 void spi_mem_view_detect_free(SPIMemDetectView* app) {
-    with_view_model(
-        app->view, SPIMemDetectViewModel * model, { icon_animation_free(model->icon); }, false);
+    with_view_model(app->view, SPIMemDetectViewModel * model, { icon_animation_free(model->icon); }, false);
     view_free(app->view);
     free(app);
 }

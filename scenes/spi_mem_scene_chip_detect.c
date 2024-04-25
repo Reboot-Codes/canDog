@@ -10,19 +10,19 @@ void spi_mem_scene_chip_detect_on_enter(void* context) {
     notification_message(app->notifications, &sequence_blink_start_yellow);
     view_dispatcher_switch_to_view(app->view_dispatcher, SPIMemViewDetect);
     spi_mem_worker_start_thread(app->worker);
-    spi_mem_worker_chip_detect_start(
-        app->chip_info, &app->found_chips, app->worker, spi_mem_scene_chip_detect_callback, app);
+    spi_mem_worker_chip_detect_start(app->chip_info, &app->found_chips, app->worker, spi_mem_scene_chip_detect_callback, app);
 }
 
 bool spi_mem_scene_chip_detect_on_event(void* context, SceneManagerEvent event) {
     SPIMemApp* app = context;
     bool success = false;
-    if(event.type == SceneManagerEventTypeCustom) {
+    if (event.type == SceneManagerEventTypeCustom) {
         success = true;
-        if(event.event == SPIMemCustomEventWorkerChipIdentified) {
+        if (event.event == SPIMemCustomEventWorkerChipIdentified) {
             scene_manager_set_scene_state(app->scene_manager, SPIMemSceneSelectVendor, 0);
             scene_manager_next_scene(app->scene_manager, SPIMemSceneSelectVendor);
-        } else if(event.event == SPIMemCustomEventWorkerChipUnknown) {
+        }
+        else if (event.event == SPIMemCustomEventWorkerChipUnknown) {
             scene_manager_next_scene(app->scene_manager, SPIMemSceneChipDetectFail);
         }
     }

@@ -20,8 +20,7 @@ void spi_mem_scene_write_on_enter(void* context) {
     notification_message(app->notifications, &sequence_blink_start_cyan);
     spi_mem_view_progress_set_chip_size(app->view_progress, spi_mem_chip_get_size(app->chip_info));
     spi_mem_view_progress_set_file_size(app->view_progress, spi_mem_file_get_size(app));
-    spi_mem_view_progress_set_block_size(
-        app->view_progress, spi_mem_tools_get_file_max_block_size(app->chip_info));
+    spi_mem_view_progress_set_block_size(app->view_progress, spi_mem_tools_get_file_max_block_size(app->chip_info));
     view_dispatcher_switch_to_view(app->view_dispatcher, SPIMemViewProgress);
     spi_mem_worker_start_thread(app->worker);
     spi_mem_worker_write_start(app->chip_info, app->worker, spi_mem_scene_write_callback, app);
@@ -31,20 +30,25 @@ bool spi_mem_scene_write_on_event(void* context, SceneManagerEvent event) {
     SPIMemApp* app = context;
     UNUSED(app);
     bool success = false;
-    if(event.type == SceneManagerEventTypeBack) {
+    if (event.type == SceneManagerEventTypeBack) {
         success = true;
-    } else if(event.type == SceneManagerEventTypeCustom) {
+    }
+    else if (event.type == SceneManagerEventTypeCustom) {
         success = true;
-        if(event.event == SPIMemCustomEventViewReadCancel) {
+        if (event.event == SPIMemCustomEventViewReadCancel) {
             scene_manager_search_and_switch_to_previous_scene(
                 app->scene_manager, SPIMemSceneChipDetect);
-        } else if(event.event == SPIMemCustomEventWorkerBlockReaded) {
+        }
+        else if (event.event == SPIMemCustomEventWorkerBlockReaded) {
             spi_mem_view_progress_inc_progress(app->view_progress);
-        } else if(event.event == SPIMemCustomEventWorkerDone) {
+        }
+        else if (event.event == SPIMemCustomEventWorkerDone) {
             scene_manager_next_scene(app->scene_manager, SPIMemSceneVerify);
-        } else if(event.event == SPIMemCustomEventWorkerChipFail) {
+        }
+        else if (event.event == SPIMemCustomEventWorkerChipFail) {
             scene_manager_next_scene(app->scene_manager, SPIMemSceneChipError);
-        } else if(event.event == SPIMemCustomEventWorkerFileFail) {
+        }
+        else if (event.event == SPIMemCustomEventWorkerFileFail) {
             scene_manager_next_scene(app->scene_manager, SPIMemSceneStorageError);
         }
     }

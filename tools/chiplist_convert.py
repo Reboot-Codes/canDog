@@ -29,19 +29,19 @@ def parseChip(cur, arr, vendor, vendorCodeArr):
     if len(chipAttr["id"]) < 6:  # ID wihout capacity id not supported yet
         return
     chip["modelName"] = cur.tag
-    chip["vendorEnum"] = "SPIMemChipVendor" + vendor
+    chip["vendorEnum"] = "CanDogChipVendor" + vendor
     chip["vendorID"] = "0x" + chipAttr["id"][0] + chipAttr["id"][1]
     chip["typeID"] = chipAttr["id"][2] + chipAttr["id"][3]
     chip["capacityID"] = chipAttr["id"][4] + chipAttr["id"][5]
     chip["size"] = chipAttr["size"]
     if chipAttr["page"] == "SSTW":
-        chip["writeMode"] = "SPIMemChipWriteModeAAIWord"
+        chip["writeMode"] = "CanDogChipWriteModeAAIWord"
         chip["pageSize"] = "1"
     elif chipAttr["page"] == "SSTB":
-        chip["writeMode"] = "SPIMemChipWriteModeAAIByte"
+        chip["writeMode"] = "CanDogChipWriteModeAAIByte"
         chip["pageSize"] = "1"
     else:
-        chip["writeMode"] = "SPIMemChipWriteModePage"
+        chip["writeMode"] = "CanDogChipWriteModePage"
         chip["pageSize"] = chipAttr["page"]
     arr.append(chip)
     vendorCodeArr[vendor].add(chip["vendorID"])
@@ -78,8 +78,8 @@ def getVendorNameEnum(vendorID):
 
 def generateCArr(arr, filename):
     with open(filename, "w") as out:
-        print('#include "spi_mem_chip_i.h"', file=out)
-        print("const SPIMemChip SPIMemChips[] = {", file=out)
+        print('#include "candog_chip_i.h"', file=out)
+        print("const CanDogChip CanDogChips[] = {", file=out)
         for cur in arr:
             print("    {" + cur["vendorID"] + ",", file=out, end="")
             print(" 0x" + cur["typeID"] + ",", file=out, end="")
@@ -93,15 +93,16 @@ def generateCArr(arr, filename):
             else:
                 print(" " + cur["writeMode"] + "},", file=out)
 
+
 def main():
-    filename = "spi_mem_chip_arr.c"
+    filename = "candog_chip_arr.c"
     args = getArgs()
     xml = getXML(args.file)
     vendors = getVendors(xml, "SPI")
     chipArr = parseXML(xml, "SPI", vendors)
     cleanEmptyVendors(vendors)
     for cur in vendors:
-        print('    {"' + cur + '", SPIMemChipVendor' + cur + "},")
+        print('    {"' + cur + '", CanDogChipVendor' + cur + "},")
     generateCArr(chipArr, filename)
 
 

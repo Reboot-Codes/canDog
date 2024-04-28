@@ -2,7 +2,7 @@ App(
     appid="candog",
     name="canDog",
     apptype=FlipperAppType.EXTERNAL,
-    entry_point="spi_mem_app",
+    entry_point="candog_app",
     requires=["gui"],
     stack_size=1 * 2048,
     fap_description="Application for sniffing a CAN FD bus and replaying captured messages",

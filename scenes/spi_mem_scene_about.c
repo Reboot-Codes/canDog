@@ -4,7 +4,7 @@
 #define SPI_MEM_VERSION_APP FAP_VERSION
 #define SPI_MEM_DEVELOPER "Bugfish03"
 #define SPI_MEM_GITHUB "https://github.com/reboot-codes/canDog"
-#define SPI_MEM_NAME "\e#\e!       canDog        \e!\n"
+#define SPI_MEM_NAME "\e#\e!               canDog               \e!\n"
 #define SPI_MEM_BLANK_INV "\e#\e!                                                      \e!\n"
 
 void spi_mem_scene_about_on_enter(void* context) {
@@ -23,9 +23,9 @@ void spi_mem_scene_about_on_enter(void* context) {
     furi_string_cat_printf(
         tmp_string,
         "CAN FD sniffer\n"
-        "Based on the SPI Memory dumper"
-        "Originally written by Hedger, ghettorce and x893n"
-        "modified by Bugfish03 and reboot-codes\n\n");
+        "Based on SPI Memory dumper"
+        "Originally written by Hedger, ghettorce and x893n,\n"
+        "modified by Bugfish03 and\nreboot-codes\n");
     widget_add_text_scroll_element(app->widget, 0, 16, 128, 50, furi_string_get_cstr(tmp_string));
 
     furi_string_free(tmp_string);

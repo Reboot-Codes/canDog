@@ -1,24 +1,24 @@
 #include "../spi_mem_app_i.h"
 #include "../lib/spi/spi_mem_chip.h"
 
-#define SPI_MEM_VERSION_APP FAP_VERSION
-#define SPI_MEM_DEVELOPER "Bugfish03"
-#define SPI_MEM_GITHUB "https://github.com/reboot-codes/canDog"
-#define SPI_MEM_NAME "\e#\e!               canDog               \e!\n"
-#define SPI_MEM_BLANK_INV "\e#\e!                                                      \e!\n"
+#define CANDOG_VERSION_APP FAP_VERSION
+#define CANDOG_DEVELOPER "Bugfish03"
+#define CANDOG_GITHUB "https://github.com/reboot-codes/canDog"
+#define CANDOG_NAME "\e#\e!               canDog               \e!\n"
+#define CANDOG_BLANK_INV "\e#\e!                                                      \e!\n"
 
 void spi_mem_scene_about_on_enter(void* context) {
     SPIMemApp* app = context;
     FuriString* tmp_string = furi_string_alloc();
 
     widget_add_text_box_element(
-        app->widget, 0, 0, 128, 14, AlignCenter, AlignBottom, SPI_MEM_BLANK_INV, false);
+        app->widget, 0, 0, 128, 14, AlignCenter, AlignBottom, CANDOG_BLANK_INV, false);
     widget_add_text_box_element(
-        app->widget, 0, 2, 128, 14, AlignCenter, AlignBottom, SPI_MEM_NAME, false);
+        app->widget, 0, 2, 128, 14, AlignCenter, AlignBottom, CANDOG_NAME, false);
     furi_string_printf(tmp_string, "\e#%s\n", "Information");
-    furi_string_cat_printf(tmp_string, "Version: %s\n", SPI_MEM_VERSION_APP);
-    furi_string_cat_printf(tmp_string, "Developed by: %s\n", SPI_MEM_DEVELOPER);
-    furi_string_cat_printf(tmp_string, "Github: %s\n\n", SPI_MEM_GITHUB);
+    furi_string_cat_printf(tmp_string, "Version: %s\n", CANDOG_VERSION_APP);
+    furi_string_cat_printf(tmp_string, "Developed by: %s\n", CANDOG_DEVELOPER);
+    furi_string_cat_printf(tmp_string, "Github: %s\n\n", CANDOG_GITHUB);
     furi_string_cat_printf(tmp_string, "\e#%s\n", "Description");
     furi_string_cat_printf(
         tmp_string,

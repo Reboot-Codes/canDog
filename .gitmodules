@@ -1,3 +1,6 @@
 [submodule "lib/MCP2815FD_flipper"]
 	path = lib/MCP2815FD_flipper
 	url = https://github.com/vguttmann/MCP2815FD_flipper.git
+[submodule "lib/lib/libpelican"]
+	path = lib/lib/libpelican
+	url = https://github.com/vguttmann/libpelican.git

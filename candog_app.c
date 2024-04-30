@@ -38,7 +38,7 @@ CanDogApp* candog_alloc(void) {
     instance->mode = CanDogModeUnknown;
 
     // Migrate data from old sd-card folder
-    storage_common_migrate(instance->storage, EXT_PATH("spimem"), STORAGE_APP_DATA_PATH_PREFIX);
+    storage_common_migrate(instance->storage, EXT_PATH("canmem"), STORAGE_APP_DATA_PATH_PREFIX);
 
     view_dispatcher_enable_queue(instance->view_dispatcher);
     view_dispatcher_set_event_callback_context(instance->view_dispatcher, instance);

@@ -1,5 +1,5 @@
 #include "../candog_app_i.h"
-#include "../lib/spi/candog_chip.h"
+#include "../lib/can/candog_chip.h"
 
 static void candog_scene_chip_detect_fail_widget_callback(
     GuiButtonType result,

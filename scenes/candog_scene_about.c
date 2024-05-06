@@ -1,5 +1,5 @@
 #include "../candog_app_i.h"
-#include "../lib/spi/candog_chip.h"
+#include "../lib/can/candog_chip.h"
 
 #define CANDOG_VERSION_APP FAP_VERSION
 #define CANDOG_DEVELOPER "Bugfish03"

@@ -1,7 +1,7 @@
 #include <furi_hal.h>
 #include "candog_app_i.h"
 #include "candog_files.h"
-#include "lib/spi/candog_chip_i.h"
+#include "lib/can/candog_chip_i.h"
 
 static bool candog_custom_event_callback(void* context, uint32_t event) {
     furi_assert(context);

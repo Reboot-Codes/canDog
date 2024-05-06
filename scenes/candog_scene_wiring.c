@@ -1,5 +1,5 @@
 #include "../candog_app_i.h"
-#include "../lib/spi/candog_chip.h"
+#include "../lib/can/candog_chip.h"
 
 void candog_scene_wiring_on_enter(void* context) {
     CanDogApp* app = context;

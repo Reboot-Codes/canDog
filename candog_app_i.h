@@ -17,7 +17,7 @@
 #include <toolbox/path.h>
 #include <toolbox/name_generator.h>
 #include "scenes/candog_scene.h"
-#include "lib/spi/candog_worker.h"
+#include "lib/can/candog_worker.h"
 #include "candog_icons.h"
 #include "views/candog_view_progress.h"
 #include "views/candog_view_detect.h"

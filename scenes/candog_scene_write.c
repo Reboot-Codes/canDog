@@ -1,7 +1,7 @@
 #include "../candog_app_i.h"
 #include "../candog_files.h"
-#include "../lib/spi/candog_chip.h"
-#include "../lib/spi/candog_tools.h"
+#include "../lib/can/candog_chip.h"
+#include "../lib/can/candog_tools.h"
 
 void candog_scene_write_progress_view_result_callback(void* context) {
     CanDogApp* app = context;

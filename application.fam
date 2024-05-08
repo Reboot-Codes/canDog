@@ -14,5 +14,8 @@ App(
         Lib(
             name="can",
         ),
+        Lib(
+            name="libpelican",
+        ),
     ],
 )

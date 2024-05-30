@@ -66,12 +66,7 @@ void candog_worker_stop_thread(CanDogWorker* worker) {
     furi_thread_join(worker->thread);
 }
 
-void candog_worker_chip_detect_start(
-    CanDogChip* chip_info,
-    found_chips_t* found_chips,
-    CanDogWorker* worker,
-    CanDogWorkerCallback callback,
-    void* context) {
+void candog_worker_chip_detect_start(CanDogChip* chip_info, found_chips_t* found_chips, CanDogWorker* worker, CanDogWorkerCallback callback, void* context) {
     furi_check(worker->mode_index == CanDogWorkerModeIdle);
     worker->callback = callback;
     worker->cb_ctx = context;
@@ -80,11 +75,7 @@ void candog_worker_chip_detect_start(
     furi_thread_flags_set(furi_thread_get_id(worker->thread), CanDogEventChipDetect);
 }
 
-void candog_worker_read_start(
-    CanDogChip* chip_info,
-    CanDogWorker* worker,
-    CanDogWorkerCallback callback,
-    void* context) {
+void candog_worker_read_start(CanDogChip* chip_info, CanDogWorker* worker, CanDogWorkerCallback callback, void* context) {
     furi_check(worker->mode_index == CanDogWorkerModeIdle);
     worker->callback = callback;
     worker->cb_ctx = context;
@@ -92,11 +83,7 @@ void candog_worker_read_start(
     furi_thread_flags_set(furi_thread_get_id(worker->thread), CanDogEventRead);
 }
 
-void candog_worker_verify_start(
-    CanDogChip* chip_info,
-    CanDogWorker* worker,
-    CanDogWorkerCallback callback,
-    void* context) {
+void candog_worker_verify_start(CanDogChip* chip_info, CanDogWorker* worker, CanDogWorkerCallback callback, void* context) {
     furi_check(worker->mode_index == CanDogWorkerModeIdle);
     worker->callback = callback;
     worker->cb_ctx = context;
@@ -104,11 +91,7 @@ void candog_worker_verify_start(
     furi_thread_flags_set(furi_thread_get_id(worker->thread), CanDogEventVerify);
 }
 
-void candog_worker_erase_start(
-    CanDogChip* chip_info,
-    CanDogWorker* worker,
-    CanDogWorkerCallback callback,
-    void* context) {
+void candog_worker_erase_start(CanDogChip* chip_info, CanDogWorker* worker, CanDogWorkerCallback callback, void* context) {
     furi_check(worker->mode_index == CanDogWorkerModeIdle);
     worker->callback = callback;
     worker->cb_ctx = context;
@@ -116,11 +99,7 @@ void candog_worker_erase_start(
     furi_thread_flags_set(furi_thread_get_id(worker->thread), CanDogEventErase);
 }
 
-void candog_worker_write_start(
-    CanDogChip* chip_info,
-    CanDogWorker* worker,
-    CanDogWorkerCallback callback,
-    void* context) {
+void candog_worker_write_start(CanDogChip* chip_info, CanDogWorker* worker, CanDogWorkerCallback callback, void* context) {
     furi_check(worker->mode_index == CanDogWorkerModeIdle);
     worker->callback = callback;
     worker->cb_ctx = context;
